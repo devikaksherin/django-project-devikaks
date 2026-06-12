@@ -1,0 +1,15 @@
+# Ignore python virtual environment system folders
+Include/
+Lib/
+Scripts/
+pyvenv.cfg
+__pycache__/
+*.pyc
+.vc/
+
+# Explicitly ensure Git tracks all your Django project folders
+!myproject/
+!myapp/
+!templates/
+!static/
+!manage.py
