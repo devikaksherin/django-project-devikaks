@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Contact Us</h2>
+
+<p>
+Have questions about quizzes, results, or learning resources?
+We're here to help. Send us a message using the form below.
+</p>
+
+<form>
+    <label>Name</label><br>
+    <input type="text" required><br><br>
+
+    <label>Email</label><br>
+    <input type="email" required><br><br>
+
+    <label>Message</label><br>
+    <textarea rows="5" required></textarea><br><br>
+
+    <button type="submit">Send Message</button>
+</form>
+
+<br>
+
+<h3>Support Information</h3>
+<p>📧 Email: support@quizlearning.com</p>
+<p>📞 Phone: +91 98765 43210</p>
+
+{% endblock %}
