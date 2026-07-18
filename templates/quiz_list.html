@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="page-title">
+    <h1>📚 Available Quizzes</h1>
+    <p>Select a quiz and test your knowledge.</p>
+</div>
+
+<div class="quiz-container">
+
+    {% for quiz in quizzes %}
+
+    <div class="quiz-card">
+
+        <h2>{{ quiz.title }}</h2>
+
+        <p><strong>📝 Total Marks:</strong> {{ quiz.total_marks }}</p>
+
+        <p><strong>⏱ Duration:</strong> {{ quiz.duration }} Minutes</p>
+
+        <a href="{% url 'start_quiz' quiz.id %}" class="start-btn">
+            Start Quiz
+        </a>
+
+    </div>
+
+    {% empty %}
+
+    <h3>No quizzes available.</h3>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

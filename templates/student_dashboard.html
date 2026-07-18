@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<div class="student-banner">
+    <h1>👋 Welcome, {{ request.user.username }}</h1>
+    <p>Ready to test your knowledge today? 🚀</p>
+</div>
+
+<div class="dashboard-actions">
+
+    <a href="{% url 'quiz_list' %}" class="dashboard-card">
+
+        <div class="icon">📚</div>
+
+        <h2>Available Quizzes</h2>
+
+        <p>Attempt quizzes and improve your skills.</p>
+
+    </a>
+
+    <a href="{% url 'result' %}" class="dashboard-card">
+
+        <div class="icon">🏆</div>
+
+        <h2>My Results</h2>
+
+        <p>View your quiz scores and performance.</p>
+
+    </a>
+
+</div>
+
+{% endblock %}

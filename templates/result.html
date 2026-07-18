@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="result-box">
+
+    <h2>Quiz Result</h2>
+
+    <hr>
+
+    <p><strong>Student :</strong> {{ request.user.username }}</p>
+
+    <p><strong>Quiz :</strong> {{ result.quiz.title }}</p>
+
+    <p><strong>Score :</strong> {{ result.score }} / {{ result.total_marks }}</p>
+
+    <p><strong>Percentage :</strong>
+        {% widthratio result.score result.total_marks 100 %}%
+    </p>
+
+    <a href="{% url 'student_dashboard' %}" class="back-btn">
+        Back to Dashboard
+    </a>
+
+</div>
+
+{% endblock %}

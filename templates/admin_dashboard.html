@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="admin-header">
+    <h1>👨‍💼 Admin Dashboard</h1>
+    <p>Welcome, {{ request.user.username }}</p>
+    <p>Manage quizzes and questions from here.</p>
+</div>
+
+<div class="admin-grid">
+
+    <a href="{% url 'create_quiz' %}" class="admin-card">
+        <div class="card-icon">📚</div>
+        <h3>Create Quiz</h3>
+        <p>Create a new quiz.</p>
+    </a>
+
+    <a href="{% url 'add_question' %}" class="admin-card">
+        <div class="card-icon">❓</div>
+        <h3>Add Question</h3>
+        <p>Add questions to quizzes.</p>
+    </a>
+
+    <a href="{% url 'quiz_list' %}" class="admin-card">
+        <div class="card-icon">📋</div>
+        <h3>View Quizzes</h3>
+        <p>See all available quizzes.</p>
+    </a>
+
+   <a href="{% url 'reports' %}" class="admin-card">
+    <div class="card-icon">📊</div>
+    <h3>Reports</h3>
+    <p>View student performance and quiz reports.</p>
+</a>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="quiz-header">
+    <h1>{{ quiz.title }}</h1>
+    <p>Answer all questions before the timer ends.</p>
+</div>
+
+<!-- Timer -->
+<div class="timer-box">
+    ⏰ Time Left: <span id="timer"></span>
+</div>
+
+<form method="POST">
+    {% csrf_token %}
+
+    {% for question in questions %}
+
+    <div class="question-card">
+
+        <h3>Q{{ forloop.counter }}. {{ question.question }}</h3>
+
+        <label>
+            <input type="radio" name="{{ question.id }}" value="option1" required>
+            {{ question.option1 }}
+        </label>
+
+        <label>
+            <input type="radio" name="{{ question.id }}" value="option2">
+            {{ question.option2 }}
+        </label>
+
+        <label>
+            <input type="radio" name="{{ question.id }}" value="option3">
+            {{ question.option3 }}
+        </label>
+
+        <label>
+            <input type="radio" name="{{ question.id }}" value="option4">
+            {{ question.option4 }}
+        </label>
+
+    </div>
+
+    {% empty %}
+
+    <p>No questions available for this quiz.</p>
+
+    {% endfor %}
+
+    <div class="submit-section">
+        <button type="submit" class="submit-btn">
+            Submit Quiz
+        </button>
+    </div>
+
+</form>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+
+const quizDuration = Number("{{ quiz.duration|default:0 }}");
+let timeLeft = quizDuration * 60;
+
+const timer = document.getElementById("timer");
+
+const countdown = setInterval(function(){
+
+    let minutes = Math.floor(timeLeft / 60);
+    let seconds = timeLeft % 60;
+
+    if(seconds < 10){
+        seconds = "0" + seconds;
+    }
+
+    timer.innerHTML = minutes + ":" + seconds;
+
+    if(timeLeft <= 0){
+
+        clearInterval(countdown);
+
+        alert("Time is up! Your quiz will be submitted.");
+
+        document.querySelector("form").submit();
+    }
+
+    timeLeft--;
+
+},1000);
+
+</script>
+
+{% endblock %}
