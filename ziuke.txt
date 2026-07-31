@@ -1,0 +1,7 @@
+zuike comments
+Currently, you cannot create an Admin user within the project.
+Instead, Admin users should only be created using the createsuperuser command in the terminal. 
+The role-based functionality should automatically recognize any superuser and assign them the Admin role,
+ensuring they have full administrative permissions.
+
+before pushing changes to git run "git pull" command.
